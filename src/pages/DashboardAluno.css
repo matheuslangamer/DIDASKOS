@@ -1,0 +1,830 @@
+/* ======================================================= */
+/* --- ESTILOS DA PÁGINA HOME/DASHBOARD --- */
+/* ======================================================= */
+
+/* Variáveis principais */
+:root {
+    --primary-blue: #1a8f96;
+    --dark-blue-text: #14745c;
+    --bg-white: #ffffff;
+    --bg-light: #f5f7fa;
+    --bg-light-gray: #f8f9fb;
+    --dark-text: #131414;
+    --light-text: #565b6d;
+    --border-color: #e4e4e4;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --light-blue: #eaf8f7;
+    --light-green: #e8f7ee;
+    --light-orange: #fff4e8;
+    --light-red: #ffecec;
+    --green: #28a745;
+    --orange: #ff8a00;
+    --red: #e63946;
+    --purple: #8a63d2;
+    --yellow: #f5c542;
+}
+
+/* ======================================================= */
+/* GERAL DA PÁGINA */
+/* ======================================================= */
+
+.dashboard-container {
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem 3rem;
+    background: var(--bg-light);
+    box-sizing: border-box;
+}
+
+/* ======================================================= */
+/* CABEÇALHO - Home */
+/* ======================================================= */
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    min-height: 70px;
+    box-sizing: border-box;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.page-header p {
+    margin: 5px 0 0 0;
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+/* Histórico Parcial (Home) */
+.page-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.history-progress-card {
+    box-shadow: 3px 3px 5px rgba(139, 139, 139, 0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.75rem 1rem 0.75rem 0.75rem;
+    border-radius: 100px;
+    background-color: #fff;
+    /*border: 1px solid var(--border-color); */
+
+}
+
+.history-progress-card:hover {
+    background-color: var(--light-blue);
+    box-shadow: var(--shadow);
+    transform: translateY(-2px);
+}
+
+.history-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    white-space: nowrap;
+}
+
+/* Progress circle */
+.progress-circle-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(var(--primary-blue) 75%, #e0e0e0 0%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.progress-circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--dark-text);
+    color: var(--bg-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.progress-circle .history-gpa {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--bg-white);
+    margin-top: 0.1rem;
+}
+
+/* ======================================================= */
+/* --- ESTILOS DOS STAT CARDS (HOME) --- */
+/* ======================================================= */
+
+/* Compatibilidade com várias classes usadas: .stats-grid, .stats-grid-home, .dashboard-stats */
+.stats-grid,
+.stats-grid-home,
+.dashboard-stats {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Cards (compatível com .stat-card e .stat-card-home e .no-icon) */
+.stat-card,
+.stat-card-home {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.stat-card:hover,
+.stat-card-home:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Header dentro do stat-card usado quando houver título + (antes) ícone */
+.stat-card .stat-header,
+.stat-card-home .stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+/* Títulos */
+.stat-card .stat-header span,
+.stat-card-home .stat-title,
+.stat-card .stat-header span.stat-title-bold {
+    font-size: 0.95rem;
+    color: var(--light-text);
+}
+
+.stat-card .stat-header span.stat-title-bold {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.stat-card .stat-title,
+.stat-card-home .stat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: 0.4rem;
+    display: block;
+}
+
+/* Caso queira remover ícones, usamos .no-icon para centralizar conteúdo */
+.stat-card.no-icon,
+.stat-card-home.no-icon {
+    align-items: flex-start;
+}
+
+/* Ícone (mantive caso precise futuramente) */
+.stat-card .stat-icon,
+.stat-card-home .stat-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+/* Cores auxiliares para ícones (se usados) */
+.stat-card:nth-child(1) .stat-icon { background-color: var(--light-green); color: var(--green); }
+.stat-card:nth-child(2) .stat-icon { background-color: var(--light-blue); color: var(--primary-blue); }
+.stat-card:nth-child(3) .stat-icon { background-color: var(--light-orange); color: var(--orange); }
+
+/* Valores grandes */
+.stat-card h2,
+.stat-card-home h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    color: var(--dark-text);
+    line-height: 1;
+}
+
+/* Texto menor */
+.stat-card p,
+.stat-card-home p {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    margin: 0;
+}
+
+/* Percentuais / destaque do progresso quando aparecer grande */
+.stat-card .progress-percent,
+.stat-card-home .progress-percent {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark-text);
+}
+
+/* Barra de progresso pequena dentro do card */
+.stat-card .progress-bar,
+.stat-card-home .progress-bar {
+    margin-top: 0.5rem;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.stat-card .progress-fill,
+.stat-card-home .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue-text));
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* ======================================================= */
+/* --- LAYOUT DO DASHBOARD --- */
+/* ======================================================= */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.main-content-column,
+.sidebar-content-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Cards de Lista */
+.card.list-card {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+.card.list-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.card.list-card .card-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.card.list-card .card-header a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.card.list-card .card-header a:hover {
+    color: var(--dark-blue-text);
+}
+
+/* Lista de Atividades */
+.activity-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.activity-list li:hover {
+    background-color: var(--bg-light-gray);
+    transform: translateX(4px);
+}
+
+/* Activity icon preserved but non-required (keeps spacing consistent) */
+.activity-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.activity-icon.icon-blue { background-color: var(--light-blue); color: var(--primary-blue); }
+.activity-icon.icon-green { background-color: var(--light-green); color: var(--green); }
+.activity-icon.icon-orange { background-color: var(--light-orange); color: var(--orange); }
+
+.activity-details {
+    flex-grow: 1;
+}
+
+.activity-details strong {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.activity-details span {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+/* Lista de Avisos */
+.notice-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.notice-list li:hover {
+    background-color: var(--bg-light-gray);
+    transform: translateX(4px);
+}
+
+.notice-list li strong {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.notice-list li span:not(.tag) {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    line-height: 1.5;
+}
+
+.notice-list li .date {
+    font-size: 0.8rem;
+    color: var(--light-text);
+}
+
+/* Lista de Leitura */
+.reading-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.reading-list li:hover {
+    background-color: var(--bg-light-gray);
+    transform: translateX(4px);
+}
+
+.reading-list img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #eee;
+    flex-shrink: 0;
+}
+
+.reading-details {
+    flex-grow: 1;
+}
+
+.reading-details strong {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.reading-details > span {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.reading-progress {
+    margin-top: 0.75rem;
+}
+
+.reading-progress .progress-text {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.reading-progress-bar-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.reading-progress .progress-bar {
+    flex-grow: 1;
+    height: 6px;
+    border-radius: 3px;
+    background-color: #f0f0f0;
+}
+
+.reading-progress .progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue-text));
+    transition: width 0.3s ease;
+}
+
+.reading-progress .progress-percent {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--light-text);
+}
+
+/* Bordas para itens das listas */
+.card.list-card .activity-list li:not(:last-child),
+.card.list-card .reading-list li:not(:last-child),
+.card.list-card .notice-list li:not(:last-child) {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+}
+
+/* ======================================================= */
+/* --- BOTÕES / UTILITÁRIOS --- */
+/* ======================================================= */
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+    border: none;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--dark-text);
+    border: 1px solid var(--border-color);
+    padding: 0.6rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ======================================================= */
+/* --- RESPONSIVIDADE --- */
+/* ======================================================= */
+
+@media (max-width: 1200px) {
+    .stats-grid,
+    .stats-grid-home,
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+    /* manter 2 colunas no stats em telas médias, se desejar; já coberto por 1200px */
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .page-header .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .history-progress-card {
+        padding: 0.6rem 0.8rem 0.6rem 0.6rem;
+    }
+
+    .history-text {
+        font-size: 0.9rem;
+    }
+
+    .progress-circle-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .progress-circle {
+        width: 42px;
+        height: 42px;
+    }
+
+    .stats-grid,
+    .stats-grid-home,
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-grid {
+        gap: 1rem;
+    }
+
+    .card.list-card {
+        padding: 1.25rem;
+    }
+
+    .stat-card,
+    .stat-card-home {
+        padding: 1rem;
+    }
+
+    .stat-card h2,
+    .stat-card .progress-percent,
+    .stat-card-home h2,
+    .stat-card-home .progress-percent {
+        font-size: 2rem;
+    }
+
+    .reading-list img {
+        width: 48px;
+        height: 64px;
+    }
+}
+
+/* ============================== */
+/* 2. Atividades Widget - ATUALIZADO */
+/* ============================== */
+
+.atividades-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.atividades-header h3 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.view-all-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.view-all-btn:hover {
+  background: #3367d6;
+  transform: translateY(-1px);
+}
+
+/* ============================== */
+/* 12. Modal/Popup                */
+/* ============================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 900px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #666;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.detailed-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.detailed-table th {
+  background: #f8f9fa;
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #e9ecef;
+  font-size: 12px;
+  position: sticky;
+  top: 0;
+}
+
+.detailed-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+}
+
+.detailed-table tr:hover {
+  background: #f8f9fa;
+}
+
+.detailed-table tr:last-child td {
+  border-bottom: none;
+}
+
+.status-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-pendente .status-dot {
+  background: #f57c00;
+}
+
+.status-andamento .status-dot {
+  background: #1976d2;
+}
+
+.status-concluido .status-dot {
+  background: #2e7d32;
+}
+
+.status-atrasado .status-dot {
+  background: #d32f2f;
+}
+
+.nota-cell {
+  font-weight: 600;
+  text-align: center;
+}
+
+.nota-boa {
+  color: #2e7d32;
+}
+
+.nota-media {
+  color: #f57c00;
+}
+
+.nota-baixa {
+  color: #d32f2f;
+}
+
+.nota-pendente {
+  color: #666;
+  font-style: italic;
+}
+
+.data-cell {
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.disciplina-cell {
+  font-weight: 500;
+}
+
+.atividade-cell {
+  max-width: 200px;
+}
+
+/* Responsividade para o modal */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 16px;
+    margin: 10px;
+  }
+  
+  .detailed-table {
+    font-size: 12px;
+  }
+  
+  .detailed-table th,
+  .detailed-table td {
+    padding: 8px 6px;
+  }
+  
+  .atividade-cell {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

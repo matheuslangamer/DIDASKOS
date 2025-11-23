@@ -1,0 +1,87 @@
+/* ============================== */
+/* 1. Layout Principal da Página  */
+/* ============================== */
+.cronograma-page-container {
+  display: flex;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px; /* Espaço extra na parte inferior */
+}
+
+.main-content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+.right-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Widgets - Estilo genérico que se aplica a todos */
+.widget {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px 20px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.widget:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ============================== */
+/* 7. Responsividade (Layout)     */
+/* ============================== */
+
+@media (max-width: 1200px) {
+  .cronograma-page-container {
+    flex-direction: column;
+  }
+  
+  .right-sidebar {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .atividades-widget { /* Isso estava no CSS de Atividades, mas afeta o layout da sidebar */
+    flex: 1;
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cronograma-page-container {
+    gap: 15px;
+    padding-bottom: 30px;
+  }
+  
+  .widget {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cronograma-page-container {
+    gap: 12px;
+    padding-bottom: 20px;
+  }
+  
+  .main-content,
+  .right-sidebar {
+    gap: 12px;
+  }
+}

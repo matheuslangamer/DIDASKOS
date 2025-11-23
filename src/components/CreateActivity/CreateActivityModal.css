@@ -1,0 +1,246 @@
+/* ======================================================= */
+/* ESTILO BASE DO MODAL (Overlay e Janela) */
+/* ======================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999; /* Garante que fique na frente de tudo */
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modal-content-large {
+  background: #ffffff;
+  width: 95%;
+  max-width: 1000px;
+  height: 90vh;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+  overflow: hidden;
+  font-family: 'Inter', 'Arial', sans-serif; /* Sua fonte original */
+  animation: slideUp 0.3s ease-out;
+}
+
+/* ======================================================= */
+/* HEADER E SCROLL */
+/* ======================================================= */
+.modal-header {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #dee2e6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #212529;
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-header h2 i { color: #007bff; }
+
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.close-btn:hover { color: #dc3545; }
+
+.modal-scroll-area {
+  padding: 2.5rem;
+  overflow-y: auto;
+  flex: 1;
+  background-color: #fff;
+}
+
+/* ======================================================= */
+/* SEÇÕES E FORMULÁRIO (Baseado no seu HTML original) */
+/* ======================================================= */
+.form-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #f8f9fa;
+}
+
+.form-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+.section-title {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #007bff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-title i { color: #007bff; font-size: 1.1rem; }
+
+/* Grids */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+.form-group:last-child { margin-bottom: 0; }
+
+/* Labels e Inputs */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+label.required::after { content: " *"; color: #dc3545; }
+
+.form-control {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  background: #fafbfc;
+}
+
+textarea.form-control { resize: vertical; min-height: 120px; }
+
+/* ======================================================= */
+/* COMPONENTES ESPECÍFICOS */
+/* ======================================================= */
+
+/* Busca ISBN */
+.isbn-search { display: flex; gap: 1rem; margin-bottom: 1rem; }
+
+.btn-search {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  border: none;
+  padding: 0 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex; align-items: center; gap: 0.5rem;
+  white-space: nowrap;
+}
+.btn-search:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(40, 167, 69, 0.4); }
+.btn-search:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.book-preview {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 2px solid #28a745;
+  margin-top: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  animation: slideDown 0.3s ease;
+}
+
+.btn-unlink {
+  background: transparent; border: 1px solid #dc3545; color: #dc3545;
+  padding: 0.5rem 1rem; border-radius: 6px; cursor: pointer;
+  font-weight: 600; font-size: 0.85rem; margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.btn-unlink:hover { background: #fff5f5; }
+
+/* Upload PDF */
+.pdf-upload-area {
+  border: 3px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  background: #fafbfc;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.pdf-upload-area:hover { border-color: #007bff; background: #f0f8ff; }
+
+.file-item {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 15px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px; border: 1px solid #dee2e6;
+  margin-top: 10px;
+}
+
+.btn-remove-pdf {
+  background: none; border: none; color: #dc3545; cursor: pointer; font-size: 1.2rem;
+}
+
+/* Instruções Extras */
+.instruction-row {
+  display: flex; gap: 10px; margin-bottom: 10px;
+}
+.add-instruction-btn {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+  color: white; border: none; padding: 0.75rem 1.5rem;
+  border-radius: 8px; cursor: pointer; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 10px;
+}
+.add-instruction-btn:hover { transform: translateY(-2px); }
+
+/* ======================================================= */
+/* FOOTER / AÇÕES */
+/* ======================================================= */
+.form-actions {
+  display: flex; justify-content: flex-end; gap: 1rem;
+  margin-top: 2rem; padding-top: 2rem; border-top: 2px solid #f8f9fa;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  color: white; border: none; padding: 1rem 2rem; border-radius: 8px;
+  font-weight: 600; cursor: pointer;
+}
+.btn-secondary:hover { transform: translateY(-2px); }
+
+.btn-primary {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white; border: none; padding: 1rem 2rem; border-radius: 8px;
+  font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.75rem;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,123,255,0.4); }
+
+/* Animações */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideDown { from { transform: translateY(-10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .form-row { grid-template-columns: 1fr; }
+  .modal-content-large { width: 100%; height: 100%; border-radius: 0; }
+  .isbn-search { flex-direction: column; }
+  .form-actions { flex-direction: column; }
+}

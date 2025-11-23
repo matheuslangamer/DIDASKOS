@@ -1,0 +1,269 @@
+/* ============================== */
+/* 3. Agenda Semanal (Grade)
+/* ============================== */
+
+.agenda-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.agenda-header h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.agenda-filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.agenda-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.agenda-filter-group label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #555;
+  white-space: nowrap;
+}
+
+.agenda-filter-group select {
+  padding: 6px 8px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  min-width: 100px;
+  transition: border-color 0.2s;
+}
+
+.agenda-filter-group select:focus {
+  outline: none;
+  border-color: #4285f4;
+}
+
+/* Efeito de Hover (da Seção 8) */
+.agenda-filter-group select:hover {
+  border-color: #999;
+}
+
+.agenda-grid {
+  display: grid;
+  grid-template-columns: 0.9fr repeat(5, 1.6fr);
+  grid-template-rows: auto 1fr auto 1fr auto 1fr auto 1fr;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  /* Animação (da Seção 9) */
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Grade noturna - menos linhas (apenas 2 períodos + intervalo) */
+.agenda-grid.night-schedule {
+  grid-template-rows: auto 1fr auto 1fr auto 1fr;
+}
+
+.agenda-cell {
+  padding: 10px 8px;
+  font-size: 12px;
+  border-bottom: 1px solid #e0e0e0;
+  border-right: 1px solid #e0e0e0;
+  box-sizing: border-box;
+}
+
+.agenda-cell:last-child {
+  border-right: none;
+}
+
+.header-cell {
+  background-color: #f9fafb;
+  font-weight: 600;
+  color: #333;
+}
+
+.time-cell {
+  font-weight: 600;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+}
+
+/* Efeito de Hover (da Seção 8) */
+.agenda-cell.time-cell {
+  background: linear-gradient(135deg, #f9fafb, #f0f4f8);
+}
+
+.class-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.class-cell:hover {
+  background: #f8f9fa;
+}
+
+.class-cell strong {
+  font-size: 13px;
+  color: #333;
+}
+
+.class-cell span {
+  font-size: 12px;
+  color: #666;
+}
+
+.class-cell em {
+  font-size: 11px;
+  color: #999;
+  font-style: italic;
+}
+
+.break-cell {
+  text-align: center;
+  font-weight: 500;
+  background: #f4f4f4;
+  padding: 10px 0;
+  color: #666;
+  font-size: 11px;
+}
+
+/* ============================== */
+/* 11. Estados de Turno
+/* ============================== */
+
+/* Indicador visual do turno selecionado (pode ser usado no h3) */
+.turno-indicator {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.turno-manha {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.turno-noite {
+  background: #f3e5f5;
+  color: #7b1fa2;
+}
+
+/* Destaque para o turno atual na agenda */
+.agenda-container.turno-manha .header-cell {
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+}
+
+.agenda-container.turno-noite .header-cell {
+  background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+}
+
+
+/* ============================== */
+/* 7. Responsividade (Específica)
+/* ============================== */
+
+/* Responsividade para os filtros da agenda */
+@media (max-width: 1200px) {
+  .agenda-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .agenda-filters {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .agenda-filters {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  
+  .agenda-filter-group {
+    min-width: 120px;
+  }
+  
+  /* Vindo da Seção 7 */
+  .agenda-grid {
+    grid-template-columns: 0.8fr repeat(5, 1.5fr);
+    font-size: 11px;
+  }
+  
+  .agenda-cell {
+    padding: 6px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .agenda-header {
+    gap: 8px;
+  }
+  
+  .agenda-filters {
+    gap: 8px;
+  }
+  
+  .agenda-filter-group select {
+    min-width: 90px;
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  
+  .agenda-filter-group label {
+    font-size: 10px;
+  }
+  
+  /* Vindo da Seção 7 */
+  .agenda-grid {
+    grid-template-columns: 0.7fr repeat(5, 1.4fr);
+    font-size: 10px;
+  }
+  
+  .agenda-cell {
+    padding: 4px 3px;
+  }
+  
+  .class-cell strong {
+    font-size: 11px;
+  }
+  
+  .class-cell span,
+  .class-cell em {
+    font-size: 10px;
+  }
+}
+
+/* ============================== */
+/* 9. Animações (Específico)
+/* ============================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

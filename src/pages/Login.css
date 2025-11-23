@@ -1,0 +1,249 @@
+/* assets/css/pages/login/style.css */
+
+/* Reset básico e fundo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Fundo cinza claro */
+}
+
+/* O "palco" principal */
+.container {
+    position: relative;
+    width: 768px;
+    max-width: 90%;
+    height: 480px;
+    background-color: #fff;
+    border-radius: 20px; /* Borda arredondada do container GERAL */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* ESSENCIAL para o efeito de "onda" */
+}
+
+/* --- PAINÉIS DE FORMULÁRIO (Login e Registro) --- */
+.form-box {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.6s ease-in-out;
+}
+
+/* Posição inicial dos formulários */
+.form-box.login {
+    left: 50%; /* Formulário de Login começa à DIREITA */
+    z-index: 2;
+}
+
+.form-box.register {
+    left: 0; /* Formulário de Registro começa à ESQUERDA (escondido) */
+    z-index: 1;
+    opacity: 0;
+}
+
+/* --- ESTILOS DOS INPUTS --- */
+.form-box h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    background-color: #f0f2f5;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.forgot-link {
+    margin: 15px 0;
+    font-size: 0.9rem;
+}
+
+.forgot-link a {
+    color: #333;
+    text-decoration: none;
+}
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+
+.social-icons {
+    margin: 20px 0;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+.social-icons a:hover {
+    background-color: #f0f2f5;
+}
+
+/* Cores atualizadas para o novo modelo */
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #21a8b0; /* Nova cor primária: verde-azulado */
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1a8f96; /* Tom mais escuro para o hover */
+}
+
+/* --- PAINEL VERDE-AZULADO (Toggle) --- */
+.toggle-box {
+    position: absolute;
+    top: 0;
+    left: 0; /* Painel começa à ESQUERDA */
+    width: 50%;
+    height: 100%;
+    border-top-right-radius: 200px;
+    border-bottom-left-radius: 200px;
+    background: #21a8b0; /* Nova cor primária para o painel */
+    color: #fff;
+    z-index: 10;
+    transition: all 0.6s ease-in-out;
+    overflow: hidden; /* Esconde partes da "onda" */
+}
+
+/* O TRUQUE DA "ONDA" (::before) */
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    width: 500px; /* Círculo gigante */
+    height: 500px; /* Círculo gigante */
+    border-radius: 50%;
+    background: linear-gradient(to bottom, #21a8b0, #1a8f96); /* Gradiente com as novas cores */
+    
+    /* Posição inicial da "onda" (para o painel da ESQUERDA) */
+    top: -10%;
+    right: -150%; /* Posiciona o círculo fora do painel, à direita */
+    
+    /* Pega o efeito da imagem de referência */
+    transform: translateX(calc(-50% + 20px));
+    
+    z-index: 1;
+    transition: all 0.6s ease-in-out;
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.6s ease-in-out;
+    z-index: 5; /* Garante que o texto fique ACIMA da "onda" */
+}
+
+/* Botão do painel (com borda branca, mas sem preenchimento) */
+.toggle-panel .btn {
+    background-color: transparent;
+    border: 1px solid #fff;
+}
+.toggle-panel .btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Um leve preenchimento branco no hover */
+}
+
+/* Posição inicial dos painéis de texto */
+.toggle-left {
+    transform: translateX(0); /* Começa visível */
+    opacity: 1;
+}
+
+.toggle-right {
+    transform: translateX(200%); /* Começa fora, à direita */
+    opacity: 0;
+}
+
+/* --- LÓGICA DA ANIMAÇÃO (Quando .active é adicionado) --- */
+
+/* Move o painel para a DIREITA */
+.container.active .toggle-box {
+    transform: translateX(100%);
+}
+
+/* Anima a "onda" para a nova posição */
+.container.active .toggle-box::before {
+    /* Move o círculo para o outro lado */
+    transform: translateX(calc(50% - 20px));
+}
+
+/* Move o formulário de Login para a DIREITA (sai da tela) */
+.container.active .form-box.login {
+    transform: translateX(100%);
+    opacity: 0;
+    z-index: 1;
+}
+
+/* Traz o formulário de Registro da ESQUERDA */
+.container.active .form-box.register {
+    transform: translateX(0); /* CORREÇÃO (para não ficar em branco) */
+    opacity: 1;
+    z-index: 5;
+}
+
+/* Esconde o painel de texto da ESQUERDA */
+.container.active .toggle-left {
+    transform: translateX(-200%);
+    opacity: 0;
+}
+
+/* Traz o painel de texto da DIREITA */
+.container.active .toggle-right {
+    transform: translateX(0);
+    opacity: 1;
+}

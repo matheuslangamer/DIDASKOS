@@ -1,0 +1,732 @@
+/* ======================================================= */
+/* --- ESTILOS DA PÁGINA DE DISCIPLINAS --- */
+/* ======================================================= */
+
+/* Cabeçalho da Página - Harmonizado */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 0 0.5rem;
+    min-height: 70px;
+    box-sizing: border-box;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.page-header p {
+    margin: 5px 0 0 0;
+    color: var(--light-text);
+    font-size: 1rem;
+}
+
+/* Ações no Cabeçalho da Página */
+.page-header .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Stats Cards - 4 COLUNAS para Disciplinas */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .stat-icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+/* Cores dos ícones */
+.stat-card:nth-child(1) .stat-icon {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
+.stat-card:nth-child(2) .stat-icon {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+.stat-card:nth-child(3) .stat-icon {
+    background-color: var(--light-purple);
+    color: var(--purple);
+}
+
+.stat-card:nth-child(4) .stat-icon {
+    background-color: var(--light-yellow);
+    color: var(--yellow);
+}
+
+.stat-card h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1;
+}
+
+.stat-card p {
+    font-size: 0.9rem;
+    color: var(--light-text);
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Navegação por Abas - Corrigida para branco */
+.tabs-container {
+    display: flex;
+    background-color: var(--bg-white);
+    border-radius: 12px;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    gap: 0.5rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.tab-link {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: var(--light-text);
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.tab-link.active,
+.tab-link:hover {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    box-shadow: 0 2px 8px rgba(58, 168, 156, 0.2);
+}
+
+/* Grade de Disciplinas */
+.disciplines-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Classe para filtrar cards */
+.discipline-card.hidden {
+    display: none;
+}
+
+/* Card de Disciplina Individual - Nota no canto direito */
+.discipline-card {
+    position: relative;
+    background: var(--bg-white);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discipline-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Nota - No canto superior direito, quadradinha */
+.discipline-grade {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 50px;
+    text-align: center;
+}
+
+.discipline-grade.g-green {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+.discipline-grade.g-blue {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
+/* Informações do Card */
+.discipline-code {
+    font-size: 0.75rem;
+    color: var(--light-text);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.discipline-card h3 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    line-height: 1.3;
+    padding-right: 60px; /* Espaço para a nota */
+}
+
+.discipline-professor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light-text);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+}
+
+/* Progresso - Layout melhorado e alinhado */
+.discipline-progress {
+    margin-bottom: 1.25rem;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-blue), var(--dark-blue-text));
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Rodapé do Card - Alinhamento corrigido */
+.discipline-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.discipline-hours {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--light-text);
+    font-weight: 500;
+}
+
+/* Tag de Status - Estilo melhorado */
+.discipline-status-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.discipline-status-tag.ativa {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+.discipline-status-tag.concluida {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+}
+
+.discipline-status-tag.pendente {
+    background-color: var(--light-orange);
+    color: var(--orange);
+}
+
+/* --- Lista de Atividades Pendentes --- */
+.pending-task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pending-task-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.pending-task-item:last-child {
+    border-bottom: none;
+}
+
+.pending-task-item:hover {
+    background-color: var(--bg-light-gray);
+    transform: translateX(4px);
+}
+
+.task-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.task-icon.icon-red {
+    background-color: var(--light-red);
+    color: var(--red);
+}
+
+.task-icon.icon-orange {
+    background-color: var(--light-orange);
+    color: var(--orange);
+}
+
+.task-icon.icon-green {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+.task-details {
+    flex-grow: 1;
+}
+
+.task-details .task-discipline {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.task-details strong {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.task-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.task-meta .task-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--light-text);
+}
+
+.task-countdown {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--dark-blue-text);
+}
+
+.task-countdown.task-late {
+    color: var(--red);
+}
+
+/* Tags de Prioridade */
+.tag-priority {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.tag-priority.alta {
+    background-color: var(--light-red);
+    color: var(--red);
+}
+
+.tag-priority.media {
+    background-color: var(--light-orange);
+    color: var(--orange);
+}
+
+.tag-priority.baixa {
+    background-color: var(--light-green);
+    color: var(--green);
+}
+
+/* --- Estilos do Modal de Tarefa (Popup) --- */
+.modal-task-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.task-detail-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.task-detail-group span:first-child {
+    font-size: 0.9rem;
+    color: var(--light-text);
+}
+
+.task-detail-group strong,
+.task-detail-group .tag-priority {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.task-detail-group strong.task-late {
+    color: var(--red);
+}
+
+.task-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 0.5rem 0;
+}
+
+.modal-task-details h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+
+.modal-task-details p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--light-text);
+    line-height: 1.6;
+}
+
+.task-attachment-group {
+    margin-top: 1rem;
+}
+
+.task-attachment-group input[type="file"] {
+    display: none;
+}
+
+.btn-attach {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-attach i {
+    margin-right: 0;
+}
+
+.uploaded-file-preview {
+    display: none;
+    align-items: center;
+    gap: 0.75rem;
+    background-color: var(--light-blue);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+}
+
+.uploaded-file-preview i {
+    color: var(--primary-blue);
+    font-size: 1.25rem;
+}
+
+.uploaded-file-preview span {
+    flex-grow: 1;
+    font-weight: 500;
+    color: var(--dark-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.remove-file-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--light-text);
+    cursor: pointer;
+    line-height: 1;
+}
+
+.remove-file-btn:hover {
+    color: var(--red);
+}
+
+.attachment-note {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-top: 0.5rem;
+    display: block;
+}
+
+/* Botão "Mais" no modal */
+.btn-more {
+    background-color: var(--light-blue);
+    color: var(--primary-blue);
+    border: 1px solid var(--primary-blue);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-more:hover {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+}
+
+/* Footer do modal com botões alinhados */
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+/* Botões Gerais */
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--bg-white);
+    border: none;
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-blue-text);
+}
+
+.btn-secondary {
+    background-color: var(--bg-white);
+    color: var(--light-text);
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #f9f9f9;
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Telas de Tablet (1200px) */
+@media (max-width: 1200px) {
+    .disciplines-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Telas de Tablet Menor (900px) */
+@media (max-width: 900px) {
+    .disciplines-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .page-header .header-actions {
+        width: 100%;
+    }
+    
+    .page-header .header-actions .btn-primary {
+        width: 100%;
+    }
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .tabs-container {
+        flex-wrap: wrap;
+    }
+    
+    .tab-link {
+        flex-basis: calc(50% - 0.25rem);
+        font-size: 0.8rem;
+        padding: 0.6rem 0.5rem;
+    }
+
+    /* Mobile: 1 coluna para tudo */
+    .disciplines-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Responsividade da Lista de Tarefas */
+    .pending-task-item {
+        flex-wrap: wrap;
+    }
+    
+    .task-details {
+        flex-basis: 100%;
+        order: 2;
+        padding-left: calc(48px + 1rem);
+        margin-top: -1.5rem;
+    }
+    
+    .task-meta {
+        order: 1;
+        margin-left: auto;
+    }
+    
+    .task-countdown {
+        display: none;
+    }
+
+    /* Footer do modal em mobile */
+    .modal-footer {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .modal-footer .btn-more {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .disciplines-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .discipline-card h3 {
+        padding-right: 50px;
+        font-size: 1rem;
+    }
+    
+    .discipline-grade {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+        min-width: 45px;
+    }
+    
+    .discipline-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .discipline-status-tag {
+        align-self: flex-start;
+    }
+    
+    .task-meta {
+        flex-direction: row;
+        gap: 0.5rem;
+    }
+    
+    .task-countdown {
+        display: none;
+    }
+}
+

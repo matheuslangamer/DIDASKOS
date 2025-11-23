@@ -1,0 +1,271 @@
+/* =KA */
+/* 4. Gantt Chart 
+/* ============================== */
+
+.gantt-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.gantt-header h3 {
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+.expand-btn {
+  background: #4285f4;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.expand-btn:hover {
+  background: #3367d6;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+}
+
+.expand-btn:active {
+  transform: translateY(0);
+}
+
+.expand-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.gantt-container h3 { 
+  font-size: 18px; 
+  margin-bottom: 14px; 
+  color: #333;
+}
+
+/* WRAPPER DO GRÁFICO - CORRIGIDO */
+.gantt-chart-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 480px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  position: relative;
+  padding-top: 0px;
+  box-sizing: border-box;
+  background: white;
+  transition: max-height 0.3s ease;
+  /* Animação vinda da Seção 9 */
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Estado expandido */
+.gantt-chart-wrapper.expanded {
+  max-height: 600px;
+}
+
+/* GRID PRINCIPAL */
+.gantt-grid {
+  display: grid;
+  margin-top: 6px;
+  position: relative;
+  min-width: min-content;
+}
+
+/* CABEÇALHOS FIXOS - CORRIGIDOS */
+.gantt-header-cell {
+  background: #f8fafc;
+  font-size: 11px;
+  padding: 8px 6px;
+  text-align: center;
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  position: sticky;
+  z-index: 50;
+  height: 32px;
+  box-sizing: border-box;
+  color: #333;
+}
+
+/* CABEÇALHO DE MESES */
+.month-header { 
+  top: 0; 
+  font-size: 13px; 
+  z-index: 60;
+  background: #eef2f7;
+}
+
+/* Efeito de Hover vindo da Seção 8 */
+.gantt-header-cell.month-header {
+  background: linear-gradient(135deg, #eef2f7, #e2e8f0);
+}
+
+/* CABEÇALHO DE DATAS */
+.date-header { 
+  top: 32px; 
+  z-index: 55;
+  background: #f8fafc;
+}
+
+/* COLUNA FIXA DISCIPLINAS - CORRIGIDO */
+.subjects-header {
+  grid-row: 1 / span 2;
+  top: 0;
+  left: 0;
+  background: #f1f3f5;
+  font-weight: 700;
+  position: sticky;
+  z-index: 100;
+  border-right: 2px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  font-size: 12px;
+}
+
+/* CÉLULAS DE LINHA FIXAS - CORRIGIDO */
+.gantt-row-header {
+  padding: 12px 8px;
+  font-size: 13px;
+  border-right: 2px solid #ddd;
+  background: #f1f3f5;
+  font-weight: 600;
+  position: sticky;
+  left: 0;
+  z-index: 90;
+  min-width: 160px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #333;
+}
+
+/* FILLER - CORRIGIDO */
+.gantt-header-cell.date-header-filler {
+  background: #f1f3f5;
+  border-right: 2px solid #ddd;
+  position: sticky;
+  left: 0;
+  z-index: 85;
+}
+
+/* LINHAS DAS TAREFAS - CORRIGIDO */
+.gantt-task-bar-wrapper { 
+  display: flex; 
+  align-items: center; 
+  height: 40px; 
+  z-index: 10;
+  position: relative;
+  padding: 6px 4px;
+}
+
+.gantt-task-bar-light { 
+  width: 100%; 
+  height: 100%; 
+  border-radius: 12px; 
+  position: relative; 
+  overflow: hidden;
+}
+
+.gantt-task-bar-dark { 
+  height: 100%; 
+  border-radius: 12px; 
+  transition: width 0.3s ease;
+}
+
+.gantt-task-bar-light:hover .gantt-task-bar-dark {
+  filter: brightness(110%);
+}
+
+.gantt-task-info { 
+  position: absolute; 
+  top: 0; 
+  left: 8px; 
+  right: 8px;
+  font-size: 11px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  height: 100%;
+  color: #fff; 
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.task-days-left { 
+  font-size: 10px; 
+  opacity: 0.9; 
+  font-weight: 500;
+  color: black;
+}
+
+/* SCROLL SMOOTH */
+.gantt-chart-wrapper::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.gantt-chart-wrapper::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.gantt-chart-wrapper::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+  border: 2px solid #f1f1f1;
+}
+
+.gantt-chart-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.gantt-chart-wrapper::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}
+
+/* ============================== */
+/* 9. Animações (Específico)
+/* ============================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ============================== */
+/* 10. Zebra Striping (Fundo da Linha)
+/* ============================== */
+
+.gantt-row-background {
+  /* Começa na coluna 2 (depois das Disciplinas) e vai até o fim (-1) */
+  grid-column: 2 / -1; 
+  z-index: 1; /* Fica atrás das barras de tarefa (que são z-index 10) */
+  
+  /* Adiciona uma borda leve para separar as linhas */
+  border-bottom: 1px solid #eee;
+}
+
+.gantt-row-odd {
+  background-color: #f9f9f9; /* O seu cinza claro para linhas ímpares */
+}
+
+.gantt-row-even {
+  background-color: #ffffff; /* O seu branco para linhas pares */
+}

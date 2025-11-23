@@ -1,0 +1,238 @@
+/* ARQUIVO: src/pages/Anotacoes.css */
+
+/* ======================================================= */
+/* 1. CONTAINER PRINCIPAL */
+/* ======================================================= */
+.anotacoes-container {
+  width: 100%;
+  min-height: 100vh;
+  /* Padding padrão do Dashboard: 32px vertical, 48px horizontal */
+  padding: 2rem 3rem; 
+  background: var(--bg-light, #f5f7fa);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reset global para garantir que paddings não estourem a largura */
+.anotacoes-container * {
+  box-sizing: border-box;
+}
+
+/* ======================================================= */
+/* 2. HEADER (Título + Botão) */
+/* ======================================================= */
+.anotacoes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Espaço até a barra de busca */
+  padding: 0 0.5rem; /* Alinhamento visual com as outras páginas */
+  min-height: 70px;
+  background-color: transparent;
+}
+
+.anotacoes-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  line-height: 1.2;
+}
+
+.anotacoes-header p {
+  margin: 5px 0 0 0;
+  color: var(--light-text);
+  font-size: 1rem;
+}
+
+/* Container do botão de ação */
+.anotacoes-actions {
+  display: flex;
+  align-items: center;
+}
+
+/* ======================================================= */
+/* 3. ÁREA DE BUSCA (NOVA POSIÇÃO) */
+/* ======================================================= */
+.search-container-full {
+  width: 100%;
+  margin-bottom: 2.5rem; /* Espaço entre a busca e os cards */
+}
+
+/* Forçamos o estilo da SearchBar para ficar grande e destacada aqui */
+.search-container-full .search-bar {
+  width: 100%;
+  max-width: 100%;
+  height: 52px; /* Um pouco mais alta para destaque */
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px; /* Arredondamento igual aos cards */
+  box-shadow: var(--shadow); /* Sombra igual aos cards */
+  padding: 0 1.5rem;
+}
+
+.search-container-full .search-bar input {
+  font-size: 1rem;
+}
+
+/* ======================================================= */
+/* 4. CONTEÚDO (Cards) */
+/* ======================================================= */
+.anotacoes-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+/* Títulos das Seções */
+.secao-notas h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+/* Grid de Cards */
+.grid-notas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* ======================================================= */
+/* 5. ESTADO VAZIO */
+/* ======================================================= */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  text-align: center;
+  color: var(--light-text);
+  background-color: var(--bg-white);
+  border-radius: 16px;
+  border: 1px dashed var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.empty-state p {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ======================================================= */
+/* 6. BOTÃO PRIMÁRIO */
+/* ======================================================= */
+.btn-primary {
+  background-color: var(--primary-blue);
+  color: var(--bg-white);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  white-space: nowrap;
+  height: 44px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* ======================================================= */
+/* 7. RESPONSIVIDADE */
+/* ======================================================= */
+@media (max-width: 768px) {
+  .anotacoes-container {
+    padding: 1.5rem;
+  }
+
+  .anotacoes-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0;
+  }
+
+  .anotacoes-actions {
+    width: 100%;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+
+  .grid-notas {
+    grid-template-columns: 1fr;
+  }
+  
+  .secao-notas h2 {
+    padding-left: 0;
+  }
+}
+/* ARQUIVO: src/pages/Anotacoes.css */
+
+/* ... todo o código anterior ... */
+
+/* ======================================================= */
+/* 7. ANIMAÇÃO IGUAL AO CRONOGRAMA (Com efeito cascata) */
+/* ======================================================= */
+
+/* A animação que você encontrou */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* Garante que os itens comecem invisíveis para a animação funcionar */
+.anotacoes-header,
+.search-container-full,
+.anotacoes-content {
+  opacity: 0;
+  /* Usa a sua animação fadeIn com duração de 0.5s */
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Aplica os atrasos para criar o efeito de "escadinha" */
+
+/* 1. Cabeçalho aparece primeiro */
+.anotacoes-header {
+  animation-delay: 0.1s;
+}
+
+/* 2. Barra de busca aparece logo depois */
+.search-container-full {
+  animation-delay: 0.2s;
+}
+
+/* 3. Os cards aparecem por último */
+.anotacoes-content {
+  animation-delay: 0.3s;
+}
