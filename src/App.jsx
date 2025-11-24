@@ -1,36 +1,30 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-
-// 1. Importe seu layout principal
-import MainLayout from './components/MainLayout';
-
-// 2. Importe suas páginas
+import MainLayout from './pages/MainLayout'; 
 import DashboardAluno from './pages/DashboardAluno';
 import Disciplinas from './pages/Disciplinas';
 import CronogramaPage from './pages/CronogramaPage';
-// (Vamos deixar o login.jsx para depois)
-
+import Anotacoes from './pages/Anotacoes';
 import './App.css';
 
 function App() {
   return (
     <Routes>
-      {/* 3. Crie um "grupo" de rotas que usa o MainLayout */}
       <Route element={<MainLayout />}>
+        {/* MUDEI: de "/" para "/dashboard" para combinar com o MainLayout */}
+        <Route path="/dashboard" element={<DashboardAluno />} />
         
-        {/* A rota "pai" (home) */}
-        <Route path="/" element={<DashboardAluno />} /> 
+        {/* Adicione um redirect da raiz para o dashboard */}
+        <Route path="/" element={<DashboardAluno />} />
         
-        {/* As outras rotas */}
         <Route path="/disciplinas" element={<Disciplinas />} />
         <Route path="/cronograma" element={<CronogramaPage />} />
-
+        <Route path="/anotacoes" element={<Anotacoes />} />
+        
+        {/* Adicione estas rotas também se os componentes existirem */}
+        {/* <Route path="/biblioteca" element={<Biblioteca />} /> */}
+        {/* <Route path="/secretaria" element={<Secretaria />} /> */}
       </Route>
-
-      {/* Aqui fora podemos adicionar rotas que NÃO usam o menu, 
-        como a página de Login 
-      */}
-      {/* <Route path="/login" element={<Login />} /> */}
     </Routes>
   );
 }

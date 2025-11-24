@@ -1,0 +1,105 @@
+/* src/pages/Biblioteca/components/BookCard.css */
+.book-card {
+  background: var(--bg-white, #fff);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.book-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.book-cover {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-cover-placeholder {
+  font-size: 3rem;
+  color: var(--light-text, #999);
+}
+
+.book-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.book-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--dark-text, #333);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-author {
+  margin: 0 0 1rem 0;
+  color: var(--light-text, #666);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.book-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.btn-small {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  flex: 1;
+  justify-content: center;
+  min-width: 0;
+}
+
+.btn-small.btn-primary {
+  background: var(--primary-blue, #2563eb);
+  color: white;
+}
+
+.btn-small.btn-primary:hover {
+  background: var(--dark-blue, #1d4ed8);
+}
+
+.btn-small.btn-secondary {
+  background: var(--bg-light, #f5f7fa);
+  color: var(--dark-text, #333);
+  border: 1px solid var(--border-color, #e1e5e9);
+}
+
+.btn-small.btn-secondary:hover {
+  background: var(--border-color, #e1e5e9);
+}

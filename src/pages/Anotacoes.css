@@ -210,29 +210,24 @@
     transform: translateY(0); 
   }
 }
-
-/* Garante que os itens comecem invisíveis para a animação funcionar */
-.anotacoes-header,
-.search-container-full,
-.anotacoes-content {
+/* Aplica animação apenas aos elementos internos, não aos containers de layout */
+.anotacoes-header > *,
+.search-container-full > *,
+.grid-notas > * {
   opacity: 0;
-  /* Usa a sua animação fadeIn com duração de 0.5s */
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Aplica os atrasos para criar o efeito de "escadinha" */
-
-/* 1. Cabeçalho aparece primeiro */
-.anotacoes-header {
+/* Efeito cascata seguro */
+.anotacoes-header > * {
   animation-delay: 0.1s;
 }
 
-/* 2. Barra de busca aparece logo depois */
-.search-container-full {
+.search-container-full > * {
   animation-delay: 0.2s;
 }
 
-/* 3. Os cards aparecem por último */
-.anotacoes-content {
+/* Anima cada card individualmente */
+.grid-notas > * {
   animation-delay: 0.3s;
 }

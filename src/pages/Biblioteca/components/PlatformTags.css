@@ -1,0 +1,65 @@
+/* src/pages/Biblioteca/components/PlatformTags.css */
+.platform-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.platform-tag {
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid transparent;
+}
+
+/* Cores específicas para cada plataforma */
+.platform-tag.kindle {
+  background: #F4F4F4;
+  color: #333;
+  border-color: #E5E5E5;
+}
+
+.platform-tag.perlego {
+  background: #FFE8E8;
+  color: #D32F2F;
+  border-color: #FFCDD2;
+}
+
+.platform-tag.pilgrim {
+  background: #E8F4FF;
+  color: #1976D2;
+  border-color: #BBDEFB;
+}
+
+.platform-tag.physical {
+  background: #E8F5E8;
+  color: #388E3C;
+  border-color: #C8E6C9;
+}
+
+.platform-tag.pdf {
+  background: #FFF3E0;
+  color: #F57C00;
+  border-color: #FFE0B2;
+}
+
+.platform-tag.other {
+  background: #F3E5F5;
+  color: #7B1FA2;
+  border-color: #E1BEE7;
+}
+
+.platform-tag.more {
+  background: var(--bg-light, #f5f7fa);
+  color: var(--light-text, #666);
+  border-color: var(--border-color, #e1e5e9);
+}
+
+.platform-tag i {
+  font-size: 0.7rem;
+}
